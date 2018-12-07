@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShareMobTest", "ShareMobTest.csproj", "{7AEEB4FE-E4DA-9989-3EA8-0F125CCDBDDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShareMobTest.Plugins", "ShareMobTest.Plugins.csproj", "{104046CA-35DA-1DCD-6D48-22B1260C7227}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShareMobTest.Editor.Plugins", "ShareMobTest.Editor.Plugins.csproj", "{6947192A-5988-8B0B-2D54-37E09ED28F86}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7AEEB4FE-E4DA-9989-3EA8-0F125CCDBDDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AEEB4FE-E4DA-9989-3EA8-0F125CCDBDDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AEEB4FE-E4DA-9989-3EA8-0F125CCDBDDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AEEB4FE-E4DA-9989-3EA8-0F125CCDBDDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{104046CA-35DA-1DCD-6D48-22B1260C7227}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{104046CA-35DA-1DCD-6D48-22B1260C7227}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{104046CA-35DA-1DCD-6D48-22B1260C7227}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{104046CA-35DA-1DCD-6D48-22B1260C7227}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6947192A-5988-8B0B-2D54-37E09ED28F86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6947192A-5988-8B0B-2D54-37E09ED28F86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6947192A-5988-8B0B-2D54-37E09ED28F86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6947192A-5988-8B0B-2D54-37E09ED28F86}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
