@@ -8,6 +8,3 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MtaTestScene.unity
     guid: 9541abd7831619b4a82080cdb7e9c80b
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000

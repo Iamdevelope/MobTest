@@ -109,10 +109,18 @@ namespace cn.sharesdk.unity3d
 			}
 		}
 
-		public override void ShowPlatformList (int reqID, PlatformType[] platforms, ShareContent content, int x, int y) 
+		public override void ShowPlatformList (int reqID, PlatformType[] platforms, ShareContent content) 
 		{
-			ShowShareContentEditor(reqID, 0, content);
-		}
+            if (platforms != null)
+            {
+                foreach (PlatformType item in platforms)
+                {
+                    ShowShareContentEditor(reqID, item, content);
+                }
+            }
+            else
+                ShowShareContentEditor(reqID, 0, content);
+        }
 
 		public override void ShowShareContentEditor (int reqID, PlatformType platform, ShareContent content) 
 		{
