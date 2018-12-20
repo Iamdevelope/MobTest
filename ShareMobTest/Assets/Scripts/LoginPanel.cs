@@ -45,6 +45,7 @@ namespace PJW.Book.UI
         /// SDK
         /// </summary>
         public ShareSDK ssdk;
+        public Image image;
         /// <summary>
         /// 控制台
         /// </summary>
@@ -57,16 +58,11 @@ namespace PJW.Book.UI
         /// 获取到用户的头像保存到本地的文件名
         /// </summary>
         private string iconName;
-        /// <summary>
-        /// 可以分享的平台
-        /// </summary>
-        private PlatformType[] platforms;
 
         public  void Start()
         {
             Debug.Log(ssdk);
-            platforms = new PlatformType[] { PlatformType.WeChat,PlatformType.WeChatFavorites,PlatformType.WeChatMoments,PlatformType.WechatPlatform,
-            PlatformType.QQ,PlatformType.QZone,PlatformType.SinaWeibo};
+            ssdk.authHandler = AuthHandler;
             userName = transform.Find("UserName").GetComponentInChildren<InputField>();
             passWord = transform.Find("PassWord").GetComponentInChildren<InputField>();
             exitBtn = transform.Find("ExitBtn").GetComponent<Button>();
@@ -86,7 +82,23 @@ namespace PJW.Book.UI
         /// </summary>
         private void ShareButtonHandle()
         {
-            ShareContent();
+            ShareContent content = new ShareContent();
+            if (iconName != null)
+                content.SetImagePath(Application.persistentDataPath + iconName);
+            content.SetTitle(" GitHub分享 ");
+            content.SetTitleUrl("https://github.com/Iamdevelope");
+            content.SetText(" wecome my github ");
+            content.SetUrl("https://www.cnblogs.com/mufei/");
+            content.SetComment("test description");
+            content.SetMusicUrl("http://fjdx.sc.chinaz.com/Files/DownLoad/sound1/201807/10300.mp3");
+            content.SetShareType(ContentType.Webpage);
+            
+            Debug.Log(" ******* 001 ");
+            ssdk.shareHandler = ShareHandler;
+            //ssdk.ShareContent(new PlatformType[] { PlatformType.QQ,PlatformType.QZone,PlatformType.WeChat,PlatformType.WechatPlatform}, content);
+            ssdk.ShowPlatformList(null, content);
+            //ssdk.ShowShareContentEditor(PlatformType.WeChat, content);
+            //ssdk.ShowPlatformList(null, content, 100, 100);
         }
         /// <summary>
         /// 退出
@@ -105,7 +117,6 @@ namespace PJW.Book.UI
             iconName = "/qqIcon.jpg";
             if (File.Exists(Application.persistentDataPath + fileName))
                 return;
-            ssdk.authHandler = AuthHandler;
             ssdk.Authorize(PlatformType.QQ);
         }
         /// <summary>
@@ -118,7 +129,6 @@ namespace PJW.Book.UI
             iconName = "/sinaIcon.jpg";
             if (File.Exists(Application.persistentDataPath + fileName))
                 return;
-            ssdk.authHandler = AuthHandler;
             ssdk.Authorize(PlatformType.SinaWeibo);
         }
         /// <summary>
@@ -131,33 +141,7 @@ namespace PJW.Book.UI
             iconName = "/wechatIcon.jpg";
             if (File.Exists(Application.persistentDataPath + fileName))
                 return;
-            ssdk.authHandler = AuthHandler;
             ssdk.Authorize(PlatformType.WeChat);
-        }
-        /// <summary>
-        /// 分享内容
-        /// </summary>
-        private void ShareContent()
-        {
-            ShareContent content = new ShareContent();
-            if (iconName != null)
-                content.SetImagePath(Application.persistentDataPath + iconName);
-            content.SetTitle(" GitHub分享 ");
-            content.SetTitleUrl("https://github.com/Iamdevelope");
-            content.SetText(" wecome my github ");
-            content.SetSite("Mob-ShareSDK");
-            content.SetSiteUrl("https://www.cnblogs.com/mufei/");
-            content.SetUrl("https://www.cnblogs.com/mufei/");
-            content.SetComment("test description");
-            content.SetMusicUrl("http://fjdx.sc.chinaz.com/Files/DownLoad/sound1/201807/10300.mp3");
-            content.SetShareType(ContentType.Webpage);
-
-            Debug.Log(" ******* 001 ");
-            ssdk.shareHandler = ShareHandler;
-
-            //ssdk.ShareContent(platforms, content);
-
-            ssdk.ShowPlatformList(platforms, content, 100, 100);
         }
         /// <summary>
         /// 分享回调
@@ -170,6 +154,7 @@ namespace PJW.Book.UI
         {
             if (state == ResponseState.Success)
             {
+                text.text += "\n share is success and the hashtable is " + JsonMapper.ToJson(data);
                 Debug.Log(" share is success ");
                 Debug.Log(JsonMapper.ToJson(data));
             }
@@ -238,6 +223,7 @@ namespace PJW.Book.UI
             Debug.Log("开启协程进行资源下载");
             WWW www = new WWW(icon);
             yield return www;
+            image.sprite = Sprite.Create(www.texture, new Rect(0, 0, www.texture.width, www.texture.height), new Vector2(0.5f, 0.5f));
             FileStream stream = File.Create(Application.persistentDataPath + iconName);
             Texture2D texture = new Texture2D(www.texture.width, www.texture.height);
             www.LoadImageIntoTexture(texture);

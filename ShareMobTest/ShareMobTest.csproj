@@ -314,7 +314,6 @@
     <Compile Include="Assets\Scripts\Debug\LogWriter.cs" />
     <Compile Include="Assets\Scripts\Debug\TDebug.cs" />
     <Compile Include="Assets\Scripts\LoginPanel.cs" />
-    <Compile Include="Assets\Scripts\Share_WeiXinLogin.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\Android\ShareSDK\AndroidManifest.xml" />

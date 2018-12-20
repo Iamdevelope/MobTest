@@ -62,7 +62,7 @@ namespace cn.sharesdk.unity3d{
 		/// <summary>
 		/// Show the platform list to share.
 		/// </summary>
-		public abstract void ShowPlatformList (int reqID, PlatformType[] platforms, ShareContent content, int x, int y);
+		public abstract void ShowPlatformList (int reqID, PlatformType[] platforms, ShareContent content);
 		
 		/// <summary>
 		/// OGUI share to the specified platform. 
