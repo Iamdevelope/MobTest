@@ -115,9 +115,7 @@ namespace PJW.Book.UI
             Debug.Log("点击了QQ登录");
             fileName = "/qq.json";
             iconName = "/qqIcon.jpg";
-            if (File.Exists(Application.persistentDataPath + fileName))
-                return;
-            ssdk.Authorize(PlatformType.QQ);
+            Authorize(PlatformType.QQ);
         }
         /// <summary>
         /// 微博登录
@@ -127,9 +125,7 @@ namespace PJW.Book.UI
             Debug.Log("点击了微博登录");
             fileName = "/sina.json";
             iconName = "/sinaIcon.jpg";
-            if (File.Exists(Application.persistentDataPath + fileName))
-                return;
-            ssdk.Authorize(PlatformType.SinaWeibo);
+            Authorize(PlatformType.SinaWeibo);
         }
         /// <summary>
         /// 微信登录
@@ -139,9 +135,16 @@ namespace PJW.Book.UI
             Debug.Log("点击了微信登录");
             fileName = "/wechat.json";
             iconName = "/wechatIcon.jpg";
+            Authorize(PlatformType.WeChat);
+        }
+        private void Authorize(PlatformType platform)
+        {
             if (File.Exists(Application.persistentDataPath + fileName))
+            {
+                text.text += "\n 已经授权了，可以直接登录.";
                 return;
-            ssdk.Authorize(PlatformType.WeChat);
+            }
+            ssdk.Authorize(platform);
         }
         /// <summary>
         /// 分享回调

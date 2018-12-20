@@ -2283,9 +2283,9 @@ MonoBehaviour:
     sinaweibo:
       Enable: 1
       SortId: 4
-      AppKey: 2433799472
-      AppSecret: 90e6b3bf08567cfec7c4fcd6abdfcc77
-      RedirectUrl: https://www.guolagame.com
+      AppKey: 2795064461
+      AppSecret: cbcba30eac66a14368b493637a1be7e1
+      RedirectUrl: http://www.guolagame.com
       ShareByAppClient: 0
     qq:
       Enable: 1

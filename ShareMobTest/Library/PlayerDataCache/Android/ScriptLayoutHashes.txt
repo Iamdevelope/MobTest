@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-D:/Test/MobTest/MobTest/MobTest0.2.21.apk
+C:/Users/User/Desktop/MobTest0.2.23.apk
 SceneListBegin?
 Assets/MtaTestScene.unity
 SceneListEnd?
